@@ -1,4 +1,13 @@
 Planr::Application.routes.draw do
+  
+  resources :posts
+
+  root :to => "pages#home"
+            
+  match "home"      => "pages#home"
+  match "contact"   => "pages#contact"
+                         
+                         
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
