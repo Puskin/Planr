@@ -1,14 +1,14 @@
 Planr::Application.routes.draw do
   
-  devise_for :users
-
   resources :posts
 
   root :to => "pages#home"
             
   match "home"      => "pages#home"
-  match "contact"   => "pages#contact"
-                         
+  match "contact"   => "pages#contact"        
+  
+  devise_for :users
+                          
                          
   # The priority is based upon order of creation:
   # first created -> highest priority.
