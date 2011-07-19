@@ -6,13 +6,17 @@ Planr::Application.routes.draw do
             
   match "home"      => "pages#home"
   match "contact"   => "pages#contact"        
-                                
-  devise_for :users do
-    match "login" => "devise/sessions#new"     
-    match "logout" => "devise/sessions#destroy"         
-    match "signup" => "devise/registrations#new"     
+            
+    
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
+  devise_scope :user do
+    get "login", :to => "devise/sessions#new"     
+    get "signup", :to => "devise/registrations#new"   
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end  
-  devise_for :users             
+                                
+  devise_for :users  
+             
                      
                          
   # The priority is based upon order of creation:
