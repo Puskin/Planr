@@ -1,2 +1,10 @@
 <h1>Planr App</h1>
-<p>Witamy!</p>
+<p>Witamy!</p> 
+
+
+<% if user_signed_in? %>
+	<%= link_to "Baza informacji", posts_path %>
+<% else %>        
+	Załóż konto i zaloguj się by zobaczyć tajną bazę danych.
+<% end %>
+</div>

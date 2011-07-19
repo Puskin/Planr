@@ -6,9 +6,14 @@ Planr::Application.routes.draw do
             
   match "home"      => "pages#home"
   match "contact"   => "pages#contact"        
-  
-  devise_for :users
-                          
+                                
+  devise_for :users do
+    match "login" => "devise/sessions#new"     
+    match "logout" => "devise/sessions#destroy"         
+    match "signup" => "devise/registrations#new"     
+  end  
+  devise_for :users             
+                     
                          
   # The priority is based upon order of creation:
   # first created -> highest priority.

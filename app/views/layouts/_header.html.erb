@@ -1,8 +1,8 @@
 <div id="navigation">
 <% if user_signed_in? %>
 	Zalogowany jako <%= current_user.email %>. 
-	<%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %>
+	<%= link_to "Wyloguj się", logout_path, :method => :delete %>
 <% else %>        
-	<%= link_to "Zaloguj się", new_user_session_path %> lub <%= link_to "Załóż konto", new_user_registration_path %>
+	<%= link_to "Zaloguj się", login_path %> lub <%= link_to "Załóż konto", signup_path %>
 <% end %>
 </div>
