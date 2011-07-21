@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!
   
   # GET /posts
   # GET /posts.xml
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+        format.html { redirect_to(@post, :notice => 'Wpis utworzony z powodzeniem.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+        format.html { redirect_to(@post, :notice => 'Wpis zaktualizowany z powodzeniem.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
