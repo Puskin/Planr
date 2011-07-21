@@ -1,5 +1,7 @@
 Planr::Application.routes.draw do
-  
+                            
+  match '/auth/:provider/callback' => 'authentications#create'
+  resources :authentications
   resources :posts
 
   root :to => "pages#home"
@@ -7,12 +9,11 @@ Planr::Application.routes.draw do
   match "home"      => "pages#home"
   match "contact"   => "pages#contact"        
             
-    
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
+                      
+  devise_for :users, :controllers => {:registrations => 'registrations'}  
   devise_scope :user do
     get "login", :to => "devise/sessions#new"     
     get "signup", :to => "devise/registrations#new"   
-    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end  
                                 
   devise_for :users  
