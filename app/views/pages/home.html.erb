@@ -3,7 +3,9 @@
 
 
 <% if user_signed_in? %>
-	<%= link_to "Baza informacji", posts_path %>
+	<%= link_to "Baza informacji", posts_path %>  
+	<%= @user.name %> 
+	<%= image_tag(@picture, :size => "32x32") %>
 <% else %>        
 	Załóż konto i zaloguj się by zobaczyć tajną bazę danych.
 <% end %>
