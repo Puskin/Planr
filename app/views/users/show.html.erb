@@ -1,0 +1,8 @@
+Adres email: <%= @user.email %><br />
+Użytkownik numer: <%= @user.id %>   
+                        
+<ul>
+<% @posts.each do |post| %>
+	<li><%= link_to post.title, post %></li>
+<% end %>	
+</ul>

@@ -8,7 +8,9 @@ Planr::Application.routes.draw do
             
   match "home"      => "pages#home"
   match "contact"   => "pages#contact"        
-            
+
+  match '/users/:id' => 'users#show'   
+  match '/users/:id/edit' => 'users#edit'           
                       
   devise_for :users, :controllers => {:registrations => 'registrations'}  
   devise_scope :user do

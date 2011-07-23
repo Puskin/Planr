@@ -1,19 +1,25 @@
 <h1>Listing posts</h1>
 
 <table>
-  <tr>
+  <tr>            
+	<th>Picture</th>
     <th>Title</th>
-    <th>Content</th>
-    <th></th>
+    <th>User id</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @posts.each do |post| %>
-  <tr>
+  <tr> 
+	<td><%= image_tag post.picture.url(:thumb) %></td>
     <td><%= link_to post.title, post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to post.user_id, post %></td>    
+	
+	<% if @user.id == post.user_id %>      
+	    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+	    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>     
+	<% end %>
+	
   </tr>
 <% end %>
 </table>

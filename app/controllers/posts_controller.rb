@@ -1,11 +1,15 @@
+# coding: utf-8
+
 class PostsController < ApplicationController
   
   before_filter :authenticate_user!
+  before_filter :is_owner?, :only => [:edit, :update, :destroy]
   
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    @posts = Post.all     
+    @user = current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +47,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(params[:post].merge(:user_id => current_user.id))
 
     respond_to do |format|
       if @post.save
@@ -82,5 +86,17 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
+  end 
+  
+ 
+ 
+  private 
+  
+  def is_owner?        
+    @post = Post.find(params[:id])
+    unless current_user.id == @post.user_id
+      redirect_to(posts_path, :notice => 'Nie jesteś uprawniony do wykonania tej akcji')
+    end
   end
+  
 end
