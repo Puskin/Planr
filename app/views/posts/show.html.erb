@@ -9,7 +9,7 @@
 </p>
          
 <p>
-  <%= image_tag @post.picture.url %>  
+  <a href="<%= @post.picture.url %>" target="_blank"><%= image_tag @post.picture.url(:medium) %></a>  
 </p>	
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
