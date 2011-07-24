@@ -20,7 +20,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id])  
+    @categories = @post.categories
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +32,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @post = Post.new   
+    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +43,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id])  
+    @categories = Category.all
   end
 
   # POST /posts

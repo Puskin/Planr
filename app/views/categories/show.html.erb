@@ -1,0 +1,11 @@
+<h1>Categories#show</h1>
+
+<strong><%= @category.name %> </strong>
+ 
+<ul>
+<% @posts.each do |post| %>
+	<li><%= link_to post.title, post %></li>
+<% end %> 
+</ul>
+   
+<span style="display: block; width: 100px; height: 100px; background: <%= @category.color %>">

@@ -1,16 +1,18 @@
 Planr::Application.routes.draw do
                             
+
+
   match '/auth/:provider/callback' => 'authentications#create'
   resources :authentications
-  resources :posts
+  resources :posts 
+  resources :categories
 
   root :to => "pages#home"
             
   match "home"      => "pages#home"
   match "contact"   => "pages#contact"        
 
-  match '/users/:id' => 'users#show'   
-  match '/users/:id/edit' => 'users#edit'           
+             
                       
   devise_for :users, :controllers => {:registrations => 'registrations'}  
   devise_scope :user do
@@ -18,7 +20,10 @@ Planr::Application.routes.draw do
     get "signup", :to => "devise/registrations#new"   
   end  
                                 
-  devise_for :users  
+  devise_for :users                    
+  
+  match '/users/:id' => 'users#show'   
+  match '/users/:id/edit' => 'users#edit'
              
                      
                          

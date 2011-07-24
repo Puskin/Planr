@@ -21,7 +21,20 @@
   </div>              
   <div class="field">
   	<%= f.file_field :picture %>
-  </div> 
+  </div>     
+  
+  <div class="field">  
+	<ul>   
+	<% @categories.each do |category| %>
+		<li>
+			<%= check_box_tag "post[category_ids][]", category.id, @post.categories.include?(category) %>
+			<%= category.name %>
+			
+		</li>
+	<% end %>
+	</ul>
+	
+  </div>
 
   <div class="actions">
     <%= f.submit %>
