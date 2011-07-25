@@ -12,15 +12,8 @@ Planr::Application.routes.draw do
             
   match "home"      => "pages#home"
   match "contact"   => "pages#contact"        
-
-             
-                      
-  devise_for :users, :controllers => {:registrations => 'registrations'}  
-  devise_scope :user do
-    get "login", :to => "devise/sessions#new"     
-    get "signup", :to => "devise/registrations#new"   
-  end  
-                                
+                     
+  devise_for :users, :controllers => {:registrations => 'registrations'}                   
   devise_for :users                    
   
   match '/users/:id' => 'users#show'   
