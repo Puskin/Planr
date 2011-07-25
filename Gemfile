@@ -9,7 +9,6 @@ gem 'omniauth'
 gem 'fb_graph', '~> 1.9.3'
 gem 'rmagick', '~> 2.13.1'  
 gem 'paperclip', '~> 2.3'     
-gem 'annotate-models', '1.0.4'
 
 
 
