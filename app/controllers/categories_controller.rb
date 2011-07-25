@@ -1,6 +1,8 @@
 # coding: utf-8   
 
 class CategoriesController < ApplicationController
+  
+  before_filter :admin_user, :only => [:new] 
  
   def index
     @categories = Category.all    
@@ -43,6 +45,13 @@ class CategoriesController < ApplicationController
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
       end
     end
-  end
+  end     
+  
+  
+  private
+  
+      def admin_user
+        redirect_to(categories_path, :notice => 'Nie masz uprawnień!') unless current_user.admin?
+      end
 
 end
